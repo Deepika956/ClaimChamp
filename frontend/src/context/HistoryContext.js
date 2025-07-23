@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import { BASE_URL } from '../components/api'; // ✅ Adjust path if needed
 
 export const HistoryContext = createContext();
 
@@ -8,7 +9,7 @@ export const HistoryProvider = ({ children }) => {
 
   const fetchHistory = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/history');
+      const res = await axios.get(`${BASE_URL}/history`);
       setHistory(res.data);
     } catch (err) {
       console.error('Error fetching history:', err);
