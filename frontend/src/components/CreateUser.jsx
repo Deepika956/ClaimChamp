@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './CreateUser.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { BASE_URL } from './api'; // 👈 import BASE_URL
+import { BASE_URL } from '../api'; // 👈 import BASE_URL
 
 const CreateUser = () => {
   const [user, setUser] = useState({
