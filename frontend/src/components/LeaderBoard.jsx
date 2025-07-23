@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './LeaderBoard.css';
+import { BASE_URL } from "./api";
 
 const LeaderBoard = () => {
   const [users, setUsers] = useState([]);
@@ -11,7 +12,7 @@ const LeaderBoard = () => {
 
   const fetchLeaderboard = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/users/leaderboard');
+      const res = await axios.get(`${BASE_URL}/users/leaderboard`);
       setUsers(res.data);
     } catch (err) {
       console.error('Failed to fetch leaderboard:', err);
