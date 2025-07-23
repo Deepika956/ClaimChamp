@@ -1,7 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import { BASE_URL } from '../components/api'; // ✅ Adjust path if needed
-
+import { BASE_URL } from '../api'; 
 export const HistoryContext = createContext();
 
 export const HistoryProvider = ({ children }) => {
