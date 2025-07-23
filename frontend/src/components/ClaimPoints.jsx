@@ -9,7 +9,9 @@ const ClaimPoints = () => {
   const [awardedPoints, setAwardedPoints] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [selectedUserName, setSelectedUserName] = useState('');
-  const { fetchHistory } = useContext(HistoryContext); // 👈 Context for history refresh
+  const { fetchHistory } = useContext(HistoryContext);
+
+  const API_BASE = 'https://claimchamp.onrender.com';
 
   useEffect(() => {
     fetchUsers();
@@ -17,7 +19,7 @@ const ClaimPoints = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/users/leaderboard');
+      const res = await axios.get(`${API_BASE}/users/leaderboard`);
       setUsers(res.data);
     } catch (err) {
       console.error('Failed to fetch users:', err);
@@ -26,12 +28,12 @@ const ClaimPoints = () => {
 
   const handleClaim = async (userId, userName) => {
     try {
-      const res = await axios.post(`http://localhost:5000/users/${userId}/claim`);
+      const res = await axios.post(`${API_BASE}/users/${userId}/claim`);
       setAwardedPoints(res.data.points);
       setSelectedUserName(userName);
       setShowPopup(true);
-      await fetchUsers();       // 🔁 update leaderboard
-      await fetchHistory();     // 🔁 update history
+      await fetchUsers();
+      await fetchHistory();
     } catch (err) {
       console.error('Claim failed:', err);
       toast.error('Failed to claim points');
@@ -46,7 +48,7 @@ const ClaimPoints = () => {
           <div key={user._id} className="user-card">
             <div className="user-info">
               <img
-                src={`http://localhost:5000/${user.photo.replace(/\\/g, '/')}`}
+                src={`${API_BASE}/${user.photo.replace(/\\/g, '/')}`}
                 alt={user.name}
               />
               <div className="user-details">
@@ -67,7 +69,6 @@ const ClaimPoints = () => {
             <p>Great job!</p>
             <button onClick={() => setShowPopup(false)}>OK</button>
           </div>
-          {/* Firework animation */}
           <div className="firework"></div>
           <div className="firework delay1"></div>
           <div className="firework delay2"></div>
