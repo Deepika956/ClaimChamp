@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './CreateUser.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import { BASE_URL } from './api'; // 👈 import BASE_URL
 
 const CreateUser = () => {
   const [user, setUser] = useState({
@@ -35,7 +36,7 @@ const CreateUser = () => {
     formData.append('photo', photoFile);
 
     try {
-      await axios.post('http://localhost:5000/users', formData, {
+      await axios.post(`${BASE_URL}/users`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       toast.success("User added successfully!");
