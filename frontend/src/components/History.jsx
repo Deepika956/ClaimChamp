@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { HistoryContext } from "../context/HistoryContext";
 import "./History.css";
-import { BASE_URL } from "./api"; // 👈 Import the base URL
+import { BASE_URL } from "../api";
 
 const History = () => {
   const { history, fetchHistory } = useContext(HistoryContext);
