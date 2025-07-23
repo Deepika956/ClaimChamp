@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './LeaderBoard.css';
-import { BASE_URL } from "./api";
+import { BASE_URL } from "../api";
 
 const LeaderBoard = () => {
   const [users, setUsers] = useState([]);
