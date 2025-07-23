@@ -37,7 +37,7 @@ const LeaderBoard = () => {
               <td>{index + 1}</td>
               <td>
                 <img
-                  src={`http://localhost:5000/${user.photo.replace(/\\/g, '/')}`}
+                  src={`${BASE_URL}/${user.photo.replace(/\\/g, '/')}`}
                   alt={user.name}
                   className="leaderboard-photo"
                 />
